@@ -6,6 +6,7 @@ USE cromalink_db;
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(255) UNIQUE NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     biography TEXT,
@@ -20,27 +21,6 @@ CREATE TABLE users (
     active BOOLEAN DEFAULT TRUE,
     staff BOOLEAN DEFAULT FALSE
 );
-
--- Tabla Seguidores
-CREATE TABLE users_followers (
-    follower_id INT,
-    followed_id INT,
-    PRIMARY KEY (follower_id, followed_id),
-    FOREIGN KEY (follower_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (followed_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
--- Tabla Mensajes
-CREATE TABLE users_messages (
-    sender_id INT,
-    recipient_id INT,
-    content TEXT,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (sender_id, recipient_id, timestamp),
-    FOREIGN KEY (sender_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (recipient_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
 -- Tabla Publicaciones
 CREATE TABLE publications (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -52,38 +32,26 @@ CREATE TABLE publications (
     FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- Tabla Comenta
+CREATE TABLE comments (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    publication_id INT,
+    created_by INT,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (publication_id) REFERENCES publications(id) ON DELETE CASCADE,
+    FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
+);
+
 -- Tabla Reacciones
 CREATE TABLE reactions (
     publication_id INT,
     reaction_by INT,
-    type ENUM(1,2,3,4,5]) NOT NULL,
-    PRIMARY KEY (publication_id, reaction_by, type),
+    PRIMARY KEY (publication_id, reaction_by),
     FOREIGN KEY (publication_id) REFERENCES publications(id) ON DELETE CASCADE,
     FOREIGN KEY (reaction_by) REFERENCES users(id) ON DELETE CASCADE
 );
-
--- Tabla Eventos Sociales
-CREATE TABLE social_events (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255),
-    publication_id INT,
-    datetime_start DATETIME,
-    datetime_end DATETIME,
-    country VARCHAR(255),
-    longitude DECIMAL(9,6),
-    latitude DECIMAL(8,6),
-    FOREIGN KEY (publication_id) REFERENCES publications(id) ON DELETE CASCADE
-);
-
--- Tabla Participantes de Eventos Sociales
-CREATE TABLE social_event_participants (
-    social_event_id INT,
-    participant_id INT,
-    PRIMARY KEY (social_event_id, participant_id),
-    FOREIGN KEY (social_event_id) REFERENCES social_events(id) ON DELETE CASCADE,
-    FOREIGN KEY (participant_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
 
 -- Restricción de dominio para email
 ALTER TABLE users
