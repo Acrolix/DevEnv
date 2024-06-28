@@ -1,13 +1,14 @@
-## Entorno de desarrollo para ComaLink ##
-1) Clonar Este repo.
-2) Ingresar a la carpeta MySQL
-3) Ejecutar ``docker composer up -d``
-   - Esto correrar un servidor MySQL Vacío
-   - Es necario correr el archivo comalink-db.sql con el DDL para la creación de las tablas.
-   - Ingrear a la linea de ocmandos del Contenedor con el siguiente comando: ``docker exec -it cromalink-db /bin/bash``
-   - En la linea de comando ejecutar ``mysql -p``, va a solicitar la ocntraseña ``acr321``
-   - En esta instancia ya se puede copiar y pegar las sentencias DDL.
-  
-   - Otra opción es utilizar un IDE para SQL.
-  
-   
+## Entorno de desarrollo para ComaLink
+
+1. Clonar Este repo. ( `git clone git@github.com:Acrolix/DevEnv.git` )
+2. ingresar a la carpeta `cd DevEnv`
+3. Ejecutar `docker composer up -d`
+4. Conectarce con cualquier cliente SQL.
+   - Host: localhost
+   - Port: 3306
+   - User: root
+   - Pass: acr321
+
+El archivo cromalink-db.sql se va a inicializar junto con el contenedor, dejando las tablas para la aplicación vacias.
+
+
