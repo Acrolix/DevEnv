@@ -10,8 +10,11 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "acr321"
-      TZ: America/Montevideo
+       MYSQL_ROOT_PASSWORD: "E.aj9rj2.,aSpeN.l."
+       MYSQL_DATABASE: cromalink_db
+       MYSQL_USER: cromalink_user
+       MYSQL_PASSWORD: Cr0m4l1nK.
+       TZ: America/Montevideo
     volumes:
       - ./cromalink-db.sql:/docker-entrypoint-initdb.d/start.sql
       - cromalink-db-volume:/var/lib/mysql
