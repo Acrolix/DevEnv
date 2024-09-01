@@ -4,6 +4,8 @@
 2. ingresar a la carpeta `cd DevEnv`
 3. Ejecutar `docker composer up -d`
 4. Conectarce con cualquier cliente SQL.
+
+   - Database: cromalink_db
    - Host: localhost
    - Port: 3306
    - MYSQL_ROOT_PASSWORD: "Cr0m4l1nK.root"
