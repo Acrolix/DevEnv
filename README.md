@@ -6,9 +6,11 @@
 4. Conectarce con cualquier cliente SQL.
    - Host: localhost
    - Port: 3306
-   - User: root
-   - Pass: acr321
+   - MYSQL_ROOT_PASSWORD: "Cr0m4l1nK.root"
+   - MYSQL_DATABASE: "cromalink_db"
+   - MYSQL_USER: "cromalink_user"
+   - MYSQL_PASSWORD: "Cr0m4l1nK."
 
-El archivo cromalink-db.sql se va a inicializar junto con el contenedor, dejando las tablas para la aplicación vacias.
+El archivo DDL.sql se va a inicializar junto con el contenedor, dejando las tablas para la aplicación vacias.
 
 
