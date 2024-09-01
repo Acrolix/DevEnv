@@ -12,6 +12,7 @@ CREATE TABLE users (
     active BOOLEAN DEFAULT FALSE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    email_verified_at DATETIME DEFAULT NULL,
     CONSTRAINT chk_users_email CHECK (email REGEXP '\\b[\\w\.-]+@[\\w\.-]+\.\\w{2,4}\\b'),
     CONSTRAINT chk_users_password CHECK (password REGEXP '\\$2a*\\$\\d\\d\\$[\\s\\S]{53}'),
     CONSTRAINT chk_users_last_login CHECK (last_login <= SYSDATE() OR last_login IS NULL),
