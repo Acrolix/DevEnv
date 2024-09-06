@@ -15,7 +15,7 @@ CREATE TABLE users (
     email_verified_at DATETIME DEFAULT NULL,
     remember_token varchar(100) DEFAULT NULL,
     CONSTRAINT chk_users_email CHECK (email REGEXP '\\b[\\w\.-]+@[\\w\.-]+\.\\w{2,4}\\b'),
-    CONSTRAINT chk_users_password CHECK (password REGEXP '\\$2a*\\$\\d\\d\\$[\\s\\S]{53}'),
+    CONSTRAINT chk_users_password CHECK (password REGEXP '\\$2[a-z]*\\$\\d\\d\\$[\\s\\S]{53}'),
     CONSTRAINT chk_users_last_login CHECK (last_login <= SYSDATE() OR last_login IS NULL),
     CONSTRAINT chk_users_created_at CHECK (created_at <= SYSDATE()),
     CONSTRAINT chk_users_updated_at CHECK (updated_at <= SYSDATE() AND updated_at >= created_at)
