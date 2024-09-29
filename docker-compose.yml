@@ -14,10 +14,11 @@ services:
        MYSQL_DATABASE: "cromalink_db"
        MYSQL_USER: "cromalink_user"
        MYSQL_PASSWORD: "Cr0m4l1nK."
-       TZ: America/Montevideo
+       #TZ: America/Montevideo
     volumes:
       - ./DDL.sql:/docker-entrypoint-initdb.d/start.sql
       - cromalink_db_volume:/var/lib/mysql
+      # - ./temp:/tmp
 
 
 volumes:
