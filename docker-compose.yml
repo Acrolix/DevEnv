@@ -5,22 +5,19 @@ services:
     build:
       context: ./mysql-db
     container_name: cromalink_db
-
+    hostname: cromalink_db
     # restart: on-failure
     ports:
       - "3306:3306"
     environment:
-       MYSQL_ROOT_PASSWORD: "Cr0m4l1nK.root"
-       MYSQL_DATABASE: "cromalink_db"
-       MYSQL_USER: "cromalink_user"
-       MYSQL_PASSWORD: "Cr0m4l1nK."
-       #TZ: America/Montevideo
+      MYSQL_ROOT_PASSWORD: "Cr0m4l1nK.root"
+      MYSQL_DATABASE: "cromalink_db"
+      MYSQL_USER: "cromalink_user"
+      MYSQL_PASSWORD: "Cr0m4l1nK."
+      TZ: America/Montevideo
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
     volumes:
-      - ./DDL.sql:/docker-entrypoint-initdb.d/start.sql
       - cromalink_db_volume:/var/lib/mysql
-      # - ./temp:/tmp
-
-
 volumes:
   cromalink_db_volume: {}
-  
