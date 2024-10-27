@@ -6,6 +6,8 @@ services:
       context: ./mysql-db
     container_name: cromalink_db
     hostname: cromalink_db
+    networks:
+      - cromalink
     # restart: on-failure
     ports:
       - "3306:3306"
@@ -15,9 +17,15 @@ services:
       MYSQL_USER: "cromalink_user"
       MYSQL_PASSWORD: "Cr0m4l1nK."
       TZ: America/Montevideo
-    extra_hosts:
-    - "host.docker.internal:host-gateway"
     volumes:
       - cromalink_db_volume:/var/lib/mysql
+
 volumes:
   cromalink_db_volume: {}
+
+networks:
+  cromalink:
+    name: cromalink
+    driver: bridge
+  
+
