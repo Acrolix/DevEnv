@@ -6,7 +6,7 @@
 4. Conectarce con cualquier cliente SQL.
 
    - Database: cromalink_db
-   - Host: localhost
+   - Host: localhost # cromalink_db for docker container
    - Port: 3306
    - MYSQL_ROOT_PASSWORD: "Cr0m4l1nK.root"
    - MYSQL_DATABASE: "cromalink_db"
@@ -15,4 +15,5 @@
 
 
 El archivo cromalink_dump_full.sql se va a inicializar junto con el contenedor, dejando las tablas para la aplicación.
+`mysqldump -p -R -E -B --add-drop-database --triggers --single-transaction cromalink_db > cromalink_db_full.sql`
 
