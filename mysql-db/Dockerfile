@@ -1,5 +1,8 @@
 FROM mysql
 
-COPY ./cromalink_dump_full.sql /docker-entrypoint-initdb.d/
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+
+COPY ./DDL_DML.sql /docker-entrypoint-initdb.d/
 
 EXPOSE 3306

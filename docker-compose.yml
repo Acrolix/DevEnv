@@ -7,15 +7,16 @@ services:
     container_name: cromalink_db
     hostname: cromalink_db
     networks:
-      - cromalink
+      cromalink:
+        ipv4_address: 172.18.0.20
     # restart: on-failure
     ports:
       - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "Cr0m4l1nK.root"
       MYSQL_DATABASE: "cromalink_db"
-      MYSQL_USER: "cromalink_user"
-      MYSQL_PASSWORD: "Cr0m4l1nK."
+      MYSQL_CHARSET: "utf8mb4"
+      MYSQL_COLLATION: "utf8mb4_0900_as_cs"
       TZ: America/Montevideo
     volumes:
       - cromalink_db_volume:/var/lib/mysql
@@ -27,5 +28,7 @@ networks:
   cromalink:
     name: cromalink
     driver: bridge
-  
-
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
+          ip_range: 172.18.0.0/20
