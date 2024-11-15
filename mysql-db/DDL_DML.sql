@@ -573,6 +573,7 @@ CALL registrarUsuarioAdmin('test.mod@cromalink.acrolix.tech', '$2a$10$G7Gb3r7nQi
 CREATE USER 'cromalink_auth'@'172.18.0.11' IDENTIFIED BY 'password_auth';
 CREATE USER 'cromalink_users'@'172.18.0.12' IDENTIFIED BY 'password_users';
 CREATE USER 'cromalink_posts'@'172.18.0.13' IDENTIFIED BY 'password_posts';
+CREATE USER 'cromalink_groups'@'172.18.0.14' IDENTIFIED BY 'password_groups';
 -- CREATE USER 'cromalink_backoffice'@'cromalink-api-backoffice' IDENTIFIED BY 'password_backoffice';
 CREATE USER 'cromalink_backoffice'@'%' IDENTIFIED BY 'password_backoffice';
 
@@ -611,7 +612,8 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.reactions TO 'cromalink_pos
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.publications TO 'cromalink_posts'@'172.18.0.13';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.labels TO 'cromalink_posts'@'172.18.0.13';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.resources TO 'cromalink_posts'@'172.18.0.13';
-GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.groups TO 'cromalink_posts'@'172.18.0.13';
-GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.group_publications TO 'cromalink_posts'@'172.18.0.13';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.social_events TO 'cromalink_posts'@'172.18.0.13';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.social_event_participants TO 'cromalink_posts'@'172.18.0.13';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.groups TO 'cromalink_groups'@'172.18.0.14';
+GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.group_publications TO 'cromalink_groups'@'172.18.0.14';
