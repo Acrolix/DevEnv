@@ -615,5 +615,6 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.resources TO 'cromalink_pos
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.social_events TO 'cromalink_posts'@'172.18.0.13';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.social_event_participants TO 'cromalink_posts'@'172.18.0.13';
 
+GRANT SELECT ON cromalink_db.users TO 'cromalink_groups'@'172.18.0.14';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.groups TO 'cromalink_groups'@'172.18.0.14';
 GRANT SELECT, INSERT, UPDATE, DELETE ON cromalink_db.group_publications TO 'cromalink_groups'@'172.18.0.14';
